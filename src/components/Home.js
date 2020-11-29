@@ -3,10 +3,13 @@ import React from "react";
 export class Home extends React.Component {
     constructor(props) {
         super();
-        this.age = props.age;
+        this.state = {
+            age: props.initialAge,
+            status: 0,
+        }
     }
     onMakeOlder() {
-        this.age += 3
+        this.setState({ age: this.state.age + 3 });
         console.log(this.age)
     }
     render() {
@@ -14,17 +17,10 @@ export class Home extends React.Component {
           <div>
               <p> In a new content!</p>
               <p>Your name is {this.props.name}</p>
-              <p>Your age is {this.age}</p>
+              <p>Your age is {this.state.age}</p>
+              <p>status:{this.state.status}</p>
               <p>User obj {this.props.user.name}</p>
-              <div>
-                  <h4>Hobbies</h4>
-                  <ul>
-                      {this.props.user.hobbies.map((hobby) => {
-                          return <li key={ hobby}>{ hobby}</li>
-                      })}
-                  </ul>
-              </div>
-              <button className="btn btn-primary" onClick={ this.onMakeOlder.bind(this) }>Make me order</button>
+              <button className="btn btn-primary" onClick={ this.onMakeOlder.bind(this) }>Make me older</button>
         </div>
     );
   }

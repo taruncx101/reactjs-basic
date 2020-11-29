@@ -7,6 +7,7 @@ export class Home extends React.Component {
     }
     onMakeOlder() {
         this.age += 3
+        console.log(this.age)
     }
     render() {
       return (
